@@ -11,7 +11,7 @@ lambda_algo::lambda_algo(Polynomial &p){
 
 lambda_algo::check_lambda(const Polynomial &p) {
     int degree = p[0].second;
-    lower_bound = factorial(degree - 1);
+    lower_bound = factorial(degree);
 }
 
 lambda_algo::factorial(int n) {
