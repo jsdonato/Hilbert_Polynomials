@@ -1,9 +1,15 @@
 
-
+#include <fstream>
 #include "polynomial.hpp"
-Polynomial::Polynomial(vector<pair<double, int>> poly){
-    for (int i = 0; i < poly.size(); i++){
-        polynomial.emplace_back(poly[i].first, poly[i].second);
+Polynomial::Polynomial(ifstream &in){
+    size_t degree;
+    in >> degree;
+    
+    size_t curr_degree;
+    size_t curr_coeff;
+    for (int i = 0; i <= degree; i++){
+        in >> curr_degree >> curr_coeff;
+        polynomial.emplace_back(curr_coeff, curr_degree);
     }
 }
 

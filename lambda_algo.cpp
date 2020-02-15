@@ -1,14 +1,21 @@
 
 
 #include "lambda_algo.hpp"
+#include <iostream>
+using namespace std;
+
+lambda_algo::lambda_algo(Polynomial &p){
+    determine_upperbound();
+}
 
 void lambda_algo::determine_upperbound(){
     int M = 0;
-    //TODO: include functionality for determining upper bound.
+    cout << "INPUT UPPER BOUND FOR LAMBDA PARTITION: ";
+    cin >> M;
     upper_bound = M;
 }
 
-void lambda_algo::initialize_evaluators(){
+void lambda_algo::initialize_evaluators(Polynomial &p){
     size_t n = p.degree();
     int M = upper_bound;
     for (int i = 0; i <= n; i++){
@@ -17,7 +24,7 @@ void lambda_algo::initialize_evaluators(){
     }
 }
 
-void lambda_algo::initialize_targets(){
+void lambda_algo::initialize_targets(Polynomial &p){
     size_t n = p.degree();
     int M = upper_bound;
     for (int i = 0; i <= n; i++){

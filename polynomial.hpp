@@ -13,7 +13,7 @@ using namespace std;
 class Polynomial{
 public:
     
-    Polynomial(vector<pair<double, int>> poly);
+    Polynomial(ifstream &in);
     
     double evaluate(double d);
     

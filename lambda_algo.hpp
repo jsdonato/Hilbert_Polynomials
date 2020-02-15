@@ -10,15 +10,14 @@ using namespace std;
 
 class lambda_algo{
 public:
-    lambda_algo(Polynomial poly);
+    lambda_algo(Polynomial &p);
     
     void determine_upperbound();
     
-    void initialize_evaluators();
+    void initialize_evaluators(Polynomial &p);
     
-    void initialize_targets();
+    void initialize_targets(Polynomial &p);
 private:
-    Polynomial p;
     vector<int> targets;
     vector<int> evaluators;
     int upper_bound;
