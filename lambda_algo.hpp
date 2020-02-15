@@ -20,8 +20,8 @@ public:
 private:
     vector<int> targets;
     vector<int> evaluators;
-    check_lambda(const Polynomial &p);
-    factorial(int n)
+    void check_lambda(const Polynomial &p);
+    int factorial(int n)
     int upper_bound;
     int lower_bound;
 };

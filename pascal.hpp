@@ -17,6 +17,8 @@ private:
     
     vector<vector<unsigned long long>> p_triangle;
     
+    unsigned long long factorial(size_t n)
+    
     vector<unsigned long long> fact;
 
 };
