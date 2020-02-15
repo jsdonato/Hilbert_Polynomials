@@ -23,6 +23,9 @@ unsigned long long Pascal::Binomial(int n, int k){
     return p_triangle[n - k][k];
 }
     
+unsigned long long Pascal::factorial(size_t n){
+    fact.resize(n);
     
+}
     
 

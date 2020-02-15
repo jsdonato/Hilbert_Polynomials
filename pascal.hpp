@@ -16,6 +16,8 @@ public:
 private:
     
     vector<vector<unsigned long long>> p_triangle;
+    
+    vector<unsigned long long> fact;
 
 };
 
