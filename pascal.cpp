@@ -17,6 +17,7 @@ Pascal::Pascal(size_t size){
             p_triangle[n][m] = p_triangle[n][m - 1] + p_triangle[n - 1][m];
         }
     }
+    factorial(17);
 }
     
 unsigned long long Pascal::Binomial(int n, int k){
