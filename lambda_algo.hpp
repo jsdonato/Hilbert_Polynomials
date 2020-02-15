@@ -12,6 +12,8 @@ class lambda_algo{
 public:
     lambda_algo(Polynomial &p);
     
+    void check_lambda(Polynomial &p);
+    
     void determine_upperbound();
     
     void initialize_evaluators(Polynomial &p);
@@ -20,8 +22,7 @@ public:
 private:
     vector<int> targets;
     vector<int> evaluators;
-    check_lambda(const Polynomial &p);
-    factorial(int n)
+   
     int upper_bound;
     int lower_bound;
 };

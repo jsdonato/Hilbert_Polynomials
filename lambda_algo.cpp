@@ -9,17 +9,11 @@ lambda_algo::lambda_algo(Polynomial &p){
     determine_upperbound();
 }
 
-lambda_algo::check_lambda(const Polynomial &p) {
-    int degree = p[0].second;
-    lower_bound = factorial(degree);
+void lambda_algo::check_lambda(Polynomial &p) {
+    size_t degree = p.degree();
+    //lower_bound = factorial(degree);
 }
 
-lambda_algo::factorial(int n) {
-    if(n > 1)
-        return n * factorial(n - 1);
-    else
-        return 1;
-}
 
 void lambda_algo::determine_upperbound(){
     int M = 0;

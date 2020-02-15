@@ -22,7 +22,7 @@ double Polynomial::evaluate(double d){
 }
 
 size_t Polynomial::degree(){
-    return polynomial.size();
+    return polynomial[0].Deg();
 }
 
 
