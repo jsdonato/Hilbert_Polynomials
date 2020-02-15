@@ -5,12 +5,26 @@
 using namespace std;
 
 lambda_algo::lambda_algo(Polynomial &p){
+    check_lambda(p);
     determine_upperbound();
+}
+
+lambda_algo::check_lambda(const Polynomial &p) {
+    int degree = p[0].second;
+    lower_bound = factorial(degree - 1);
+}
+
+lambda_algo::factorial(int n) {
+    if(n > 1)
+        return n * factorial(n - 1);
+    else
+        return 1;
 }
 
 void lambda_algo::determine_upperbound(){
     int M = 0;
     cout << "INPUT UPPER BOUND FOR LAMBDA PARTITION: ";
+    cout << '\n' << "(Note: It should be greater than " << lower_bound << " )" << '\n';
     cin >> M;
     upper_bound = M;
 }

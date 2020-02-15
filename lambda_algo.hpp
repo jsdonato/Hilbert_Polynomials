@@ -20,8 +20,10 @@ public:
 private:
     vector<int> targets;
     vector<int> evaluators;
+    check_lambda(const Polynomial &p);
+    factorial(int n)
     int upper_bound;
-   
+    int lower_bound;
 };
 
 #endif /* lambda_algo_hpp */

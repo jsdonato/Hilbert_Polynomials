@@ -10,9 +10,6 @@
 using namespace std;
 
 
-
-
-
 int main(){
     ifstream in;
     
