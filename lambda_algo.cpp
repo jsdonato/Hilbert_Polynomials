@@ -17,18 +17,18 @@ void lambda_algo::determine_upperbound(){
 
 void lambda_algo::initialize_evaluators(Polynomial &p){
     size_t n = p.degree();
-    int M = upper_bound;
+    int M = upper_bound + 1;
     for (int i = 0; i <= n; i++){
-        targets.push_back(M + 1);
+        evaluators.push_back(M);
         M++;
     }
 }
 
 void lambda_algo::initialize_targets(Polynomial &p){
     size_t n = p.degree();
-    int M = upper_bound;
+    int M = upper_bound + 1;
     for (int i = 0; i <= n; i++){
-        targets.push_back(p.evaluate(M + 1));
+        targets.push_back(p.evaluate(M));
         M++;
     }
 }
