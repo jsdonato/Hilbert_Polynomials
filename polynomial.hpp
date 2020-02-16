@@ -18,6 +18,8 @@ public:
     double evaluate(double d);
     
     size_t degree();
+    
+    double first_coeff();
 
 private:
     
