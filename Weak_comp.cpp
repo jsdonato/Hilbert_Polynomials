@@ -16,7 +16,7 @@ int main()
     x.assign(N,0);
     x[0] = K;
     while(x[N - 1] != K + 1){
-        cout << " { ";
+        cout << "{";
         for (int i = 0; i < x.size(); i++){ 
             cout << " ";
             cout << x[i]; 
