@@ -6,6 +6,10 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{graphicx}
+% New packages included
+\usepackage{amsfonts}
+\usepackage{bbm}
+% end of new packages 
 
 
 \usepackage{xcolor}
@@ -33,6 +37,103 @@
 
 
 % ZIJIAN SLIDES INTRODUCTION 
+\begin{frame}
+\frametitle{Main Question of Our Project}
+\begin{itemize}
+	\item Given a polynomial \(p(d)\) and positive integer n, how many monomial ideals \(I\), up to saturation, are there in \(n + 1\) variables such that the Hilbert polynomial of \(I\) \(H_{I}(d) = p(d)\) for \(d >> 0\) ?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Concept 1 : Monomial Ideals of the Polynomial Ring \(R = \mathbbm{R}[x_0, …, x_n]\)}
+\begin{itemize}
+	\item The ring we are during with in this project is \(R = \mathbbm{R}[x_0, …, x_n]\)
+	\item This ring contains all the polynomials, which have a finite set of variables \(x_0, x_1, ... , x_n\) with coefficients in \(\mathbbm{R}\).
+	\item E.g. \(0, 1, x_0, x_0x_1, x_0^{2}x_1, 7x_0x_2 + 8x_3x_4, 6.8x_0x_n - 5.6x_1x_2^{99} \)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Concept 1 : Monomial Ideals of the Polynomial Ring \(R = \mathbbm{R}[x_0, …, x_n]\)}
+\begin{itemize}
+	\item Ideal is an abstract concept of from the Ring Theory, which is a special subset of a ring.
+	\item Several properties of the ideal \(I\) of the ring \(R\)
+	\item 1) Nonempty
+	\item 2) Closed under addition, i.e. \(\alpha, \beta \in I \Rightarrow \alpha + \beta \in I\)
+	\item 3) Absorbing multiplication, i.e. \(\alpha \in I, r \in R \Rightarrow \alpha r, r \alpha \in I\)
+\end{itemize}
+\end{frame}
+
+% \item \(I_1 = (1)\)
+
+\begin{frame}
+\frametitle{Key Concept 1 : Monomial Ideals of the Polynomial Ring \(R = \mathbbm{R}[x_0, …, x_n]\)}
+\begin{itemize}
+	\item Generator(s) of an ideal are(is a) special element(s) of an ideal I of R s.t. we can generate the whole ideal from them with the addition and multiplication operations.
+	\item \(I_1 = (1) \subset \mathbbm{R}[x_0, …, x_n], I_1 = R\)
+	\item \(I_2 = (x) \subset \mathbbm{R}[x, y], e.g. 0, x, xy, x^2, x^7y^2, x + xy, ... \in I_2\)
+	\item \(I_3 = (x, y^2) \subset \mathbbm{R}[x, y], e.g. 0, x, y^2, xy^2, x^2y^3,... \in I_3\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Concept 1 : Monomial Ideals of the Polynomial Ring \(R = \mathbbm{R}[x_0, …, x_n]\)}
+\begin{itemize}
+	\item Monomial ideals are the ideals, which only have monomial polynomials as their generators.
+	\item E.g. \(I_1 = (x_0^8, x_0x_{n - 1}^5)\) is a monomial ideal.
+	\item E.g. \(I_2 = (x_0^7, x_1 + x_2)\) is NOT a monomial ideal.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Key Concept 2 : Quotient Rings R/I with \(R = \mathbbm{R}[x_0, …, x_n]\)}
+\begin{itemize}
+	\item We can think of the concept "Quotient Ring" as some kind of "division" and "modulus"(which is not quite rigorous).
+	\item With this analogy, \(R/I\) contains the polynomials, which are within R but not in I.
+	\item (Note: \(R/I\) is actually a set of cosets, but the analogy here is enough at an introduction level.)
+	\item E.g. \(I_1 = (x) \subset R[x, y], 1, y, y^7, ... \in "R/I_1"\)
+	\item \(I_2 = (x, y^2) \subset R[x, y], 1, 2, y, ... \in "R/I_2"\)
+	\item \(I_3 = (x^2, y^3) \subset R[x, y], 1, 2, x, y, y^2, xy^2 ... \in "R/I_3"\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Concept 3 : Hilbert Function \(h_I(d)\) and Hilbert Polynomial: \(H_I(d)\)}
+\begin{itemize}
+	\item The parameter d stands for the degree of a monomial polynomial.
+	\item E.g. \(1 \Rightarrow d = 0, xy \Rightarrow d = 2, x^3y^6 \Rightarrow d = 9\)
+	\item The Hilbert Function \(h_I(d)\): The number of the monomial polynomials with degree d in "R/I"
+\end{itemize}
+\begin{theorem}
+	There is a polynomial \(H_I(d)\) in the variable d such that \(h_I(d)\) for \(d >> 0\). \(H_I(d)\) is called the Hilbert polynomial of I.
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Concept 4 : Saturation: Sense of Equivalence}
+% \includegraphics[width=6cm, height=6cm]{grid1}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Concept 4 : Saturation: Sense of Equivalence}
+% \includegraphics[width=6cm, height=6cm]{grid2}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Concept 4 : Saturation: Sense of Equivalence}
+% \includegraphics[width=6cm, height=6cm]{grid3}
+	
+\end{frame}
+
+\begin{frame}
+\frametitle{Key Concept 4 : Saturation: Sense of Equivalence}
+% \includegraphics[width=6cm, height=6cm]{grid4}
+	
+\end{frame}
+
 
 % JOE SLIDES HISTORICAL CONTEXT/MOTIVATION
 
