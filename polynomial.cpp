@@ -6,7 +6,7 @@ Polynomial::Polynomial(ifstream &in){
     in >> degree;
     
     size_t curr_degree;
-    size_t curr_coeff;
+    double curr_coeff;
     for (int i = 0; i <= degree; i++){
         in >> curr_degree >> curr_coeff;
         polynomial.emplace_back(curr_coeff, curr_degree);
@@ -23,6 +23,10 @@ double Polynomial::evaluate(double d){
 
 size_t Polynomial::degree(){
     return polynomial[0].Deg();
+}
+
+double Polynomial::first_coeff(){
+    return polynomial[0].Coef();
 }
 
 
