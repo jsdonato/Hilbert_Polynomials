@@ -2,9 +2,9 @@
 
 #include "pascal.hpp"
 
-Pascal::Pascal(size_t size){
-    vector<unsigned long long>temp(size, 0);
-    p_triangle.resize(size, temp);
+Pascal::Pascal(){
+    vector<unsigned long long>temp(60, 0);
+    p_triangle.resize(60, temp);
         
     p_triangle[0][0] = 1;
     for (int i = 0; i < p_triangle.size(); i++){
@@ -17,22 +17,24 @@ Pascal::Pascal(size_t size){
             p_triangle[n][m] = p_triangle[n][m - 1] + p_triangle[n - 1][m];
         }
     }
-    factorial(17);
+    
+    fact.resize(18);
+    fact[0] = 1;
+    for (size_t i = 1; i < fact.size(); i++){
+        fact[i] = i * fact[i - 1];
+    }
+    
 }
     
 unsigned long long Pascal::Binomial(int n, int k){
     return p_triangle[n - k][k];
 }
-    
+
 unsigned long long Pascal::factorial(size_t n){
-    fact.resize(n);
-    if (n >= 0) {
-       fact[0] = 1;
-       for (unsigned long long i = 1; i <= n; ++i) {
-          fact[i] = i * fact[i - 1];
-       }
-       return fact[n];
-    }
+    return fact[n];
 }
+
+    
+    
     
 
