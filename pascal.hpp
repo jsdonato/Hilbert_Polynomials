@@ -9,15 +9,15 @@ using namespace std;
 class Pascal{
 public:
     
-    Pascal(size_t size);
+    Pascal();
     
     unsigned long long Binomial(int n, int k);
+    
+    unsigned long long factorial(size_t n);
     
 private:
     
     vector<vector<unsigned long long>> p_triangle;
-    
-    unsigned long long factorial(size_t n)
     
     vector<unsigned long long> fact;
 
