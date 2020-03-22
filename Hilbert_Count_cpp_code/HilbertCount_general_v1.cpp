@@ -35,54 +35,54 @@ int main()
         cout<< "Please enter either a value of 1 or 2"<<endl;
         cin>> variables;
     }
-if(variables ==1){ 
-    cout << "Please enter the number of 1's in your lambda partition" << endl;
-    cin >> r;
-    cout << "For N=1, the number of saturated ideals for this particular lambda sequence is ";
-    cout << r+1; 
-    cout <<endl;
+    if(variables ==1){
+        cout << "Please enter the number of 1's in your lambda partition" << endl;
+        cin >> r;
+        cout << "For N=1, the number of saturated ideals for this particular lambda sequence is ";
+        cout << r+1;
+        cout <<endl;
     }
-if(variables ==2){
+    if(variables ==2){
 
     
-    cout << "Please enter the number of 2's, in your lambda partition" << endl;
-    cin >> p;
-    cout << "Please enter the number of 1's, in your lambda partition" << endl;
-    cin >> r;
-    data=pre_comp(r);
-    val1=((p*p)+3*p+2)/2;
+        cout << "Please enter the number of 2's, in your lambda partition" << endl;
+        cin >> p;
+        cout << "Please enter the number of 1's, in your lambda partition" << endl;
+        cin >> r;
+        data=pre_comp(r);
+        val1=((p*p)+3*p+2)/2;
     
     
-    vector<int> x;
-    x.assign(3,0);
-    x[0] = r;
+        vector<int> x;
+        x.assign(3,0);
+        x[0] = r;
     
-    while(x[3 - 1] != r + 1){//weak compositions of rows into 3 directions created
+        while(x[3 - 1] != r + 1){//weak compositions of rows into 3 directions created
         
-        for (int i = 0; i < x.size(); i++){//integer partition product of values in each weak comp
+            for (int i = 0; i < x.size(); i++){//integer partition product of values in each weak comp
             
-            N=x[i];
-            prod=prod*data[N];    //use of function to create a more efficient count
+                N=x[i];
+                prod=prod*data[N];    //use of function to create a more efficient count
             
-        }
-        sum=sum+prod;
-        prod=1;
+            }
+            sum=sum+prod;
+            prod=1;
         
-        v=x[3 - 1];
-        if(r == v){
-            cout<<"For N=2, the number of saturated ideals for this particular lambda sequence is ";
-            cout << val1*sum;
-            cout << endl;
-            return 0;
+            v=x[3 - 1];
+            if(r == v){
+                cout<<"For N=2, the number of saturated ideals for this particular lambda sequence is ";
+                cout << val1*sum;
+                cout << endl;
+                return 0;
+            }
+            x[3 - 1] = 0;
+            j = 3 - 2;
+            while(0 == x[j]){
+                j--;
+            }
+            x[j]--;
+            x[j + 1] = 1 + v;
         }
-        x[3 - 1] = 0;
-        j = 3 - 2;
-        while(0 == x[j]){
-            j--;
-        }
-        x[j]--;
-        x[j + 1] = 1 + v;
     }
-}
     
 }

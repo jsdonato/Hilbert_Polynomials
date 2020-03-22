@@ -32,12 +32,16 @@ public:
     void weak_comp(int N, int K);
     
     void run();
+    
+    vector<unsigned long long> Result();
 private:
     Pascal t;
     
     vector<double> targets;
     vector<int> evaluators;
     vector<unsigned long long> sum_of_first;
+    
+    vector<unsigned long long> result;
    
     int upper_bound;
     unsigned long long lower_bound;
