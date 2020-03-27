@@ -1,1 +1,1 @@
-#Lambda Partition finder and Saturated Ideal counter algorithms.
+# Lambda Partition finder and Saturated Ideal counter algorithms.
