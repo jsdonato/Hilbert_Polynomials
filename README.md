@@ -9,3 +9,7 @@ ideals associated with that partiton the user has that option as well.
 
 ## Algorithm
 ### Lambda partition finder
+Before diving directly into how the algorithm functions we will first recall the
+following theorem
+
+### Saturated Ideal Counter
