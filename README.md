@@ -55,5 +55,27 @@ partiton then it outputs it and if it doesn't then the algorithm terminates.
 If the user wishes to find a lambda partiton associated with p(d) if there is one
 then the user inputs the polynomial into ```polynomial.in.txt```.  For example, if the user wishes
 to input the polynomial
+
 ![Image3](/images/polynomial_ex_1.png)
+
+then in ```polynomial.in.txt``` we write 
+```
+3
+3 0.5
+2 -2.5
+1 -2
+0 7
+```
+and in running the algorithm we get the following output
+```
+Press 1 to input a polynomial (in polynomial.in.txt)
+Press 2 to input a lambda partiton
+1
+INPUT UPPER BOUND FOR LAMBDA PARTITION: 
+(Note: It should be greater than 3 )
+8
+SUCCESS! Lambda partition: {4, 4, 4, 3, 3, 1, 1}
+```
+One can check on their own that this is indeed the correct lambda partition associated 
+with the mentioned polynomial.
 
