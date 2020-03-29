@@ -80,5 +80,26 @@ One can check on their own that this is indeed the correct lambda partition asso
 with the mentioned polynomial.  Now in the case in which n=2 and n=1 the algorithm
 also outputs the number of saturated ideals associated with this ideal.  For example,
 if the Hilbert Polynomial is the following
+![Image4](/images/polynomial_ex_2.png)
+
+Then once again ```polynomial.in.txt``` becomes
+```
+1
+1 3
+0 2
+```
+And we get the following output
+```
+Press 1 to input a polynomial (in polynomial.in.txt)
+Press 2 to input a lambda partiton
+1
+INPUT UPPER BOUND FOR LAMBDA PARTITION: 
+(Note: It should be greater than 3 )
+6
+SUCCESS! Lambda partition: {2, 2, 2, 1, 1}
+Please enter your value of N. (Number of variables -1)
+2
+For N=2, the number of saturated ideals for this particular lambda sequence is 90
+```
 
 
