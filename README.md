@@ -22,6 +22,8 @@ Polynomial is of the form mentioned in MacAulays we will note that the following
 binomial coefficient
 ![Image2](/images/binomial.png)
 
+is a polynomial in d with degree \lambda-1 and more specifically
+
 
 ### Saturated Ideal Counter
 
