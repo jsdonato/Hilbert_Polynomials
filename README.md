@@ -11,5 +11,6 @@ ideals associated with that partiton the user has that option as well.
 ### Lambda partition finder
 Before diving directly into how the algorithm functions we will first recall the
 following theorem
+![](/images/.png)
 
 ### Saturated Ideal Counter
