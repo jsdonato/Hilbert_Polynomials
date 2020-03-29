@@ -27,10 +27,28 @@ is a polynomial in d with degree \lambda-1 and with leading coefficient 1/((\lam
 From here, if p(d) is indeed a Hilbert polynomial then we can multiply p(d) by 
 (\lambda-1)! to recover the number of maximal terms in our lambda partiton or in
 other words the number of leading terms in our lambda partiton which are equivalent.
-From this, we now have 
+From this, we now have the leading binomial terms in our sum mentioned in MacAulays
+theorem and we can precompute the first couple sums of those evaluated at each 
+x_0,x_1,...,x_n so that evaluating our guesses in the future is faster.  The values
+of the first couple binomial sums evaluated at each x_0,x_1,...,x_n is stored in the 
+vector called ```sum_of_first``` and is private member variable in the ```lambda_algo```
+data structure.
+
+Now going into further detail of the actual code, the member function in the ```lambda_algo```
+data structure called ```zero_run()``` generates the vector ```sum_of_first``` which we mentioned
+earlier and checks if simply the maximal terms of our lambda partiton is indeed the
+correct lambda partition.  From there, if ```zero_run()``` does not find the lambda partiton
+then we pass the task over to the ```first_run()``` member function of the ```lambda_algo```
+data structure which checks the case in which we have the leading maximal terms of our lambda partiton 
+and the final element in our lambda partiton is different from the leading maximal ones.
+Finally, if ```first_run()``` is unable to determine the lambda partiton then we pass the 
+final/general search attempt to the member function ``````
+
+
 
 
 ### Saturated Ideal Counter
+
 
 ## Use and Examples
 
