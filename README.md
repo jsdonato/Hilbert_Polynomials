@@ -77,5 +77,8 @@ INPUT UPPER BOUND FOR LAMBDA PARTITION:
 SUCCESS! Lambda partition: {4, 4, 4, 3, 3, 1, 1}
 ```
 One can check on their own that this is indeed the correct lambda partition associated 
-with the mentioned polynomial.
+with the mentioned polynomial.  Now in the case in which n=2 and n=1 the algorithm
+also outputs the number of saturated ideals associated with this ideal.  For example,
+if the Hilbert Polynomial is the following
+
 
