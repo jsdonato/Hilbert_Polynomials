@@ -13,4 +13,17 @@ Before diving directly into how the algorithm functions we will first recall the
 following theorem
 ![Image1](/images/M1927Theorem.png)
 
+From here we will then keep in mind that if x_0,x_1,...,x_n are n+1 distinct 
+real numbers, then for arbitrary values y_0,y_1,...,y_n there is a unique polynomial 
+p_n of degree at most n such that p_n(x_i)=y_i for all i in {0,1,...,n}.
+From here, we now have a basis for algorithm which will use a brute force method
+to find the lambda partiton mentioned in MacAulays theorem.  Now since a Hilbert
+Polynomial is of the form mentioned in MacAulays we will note that the following 
+binomial coefficient
+![Image2](/images/binomial.png)
+
+
 ### Saturated Ideal Counter
+
+## Use and Examples
+
