@@ -42,13 +42,18 @@ then we pass the task over to the ```first_run()``` member function of the ```la
 data structure which checks the case in which we have the leading maximal terms of our lambda partiton 
 and the final element in our lambda partiton is different from the leading maximal ones.
 Finally, if ```first_run()``` is unable to determine the lambda partiton then we pass the 
-final/general search attempt to the member function ``````
-
-
-
+final/general search attempt to the member functions ```weak_comp()```, ```accumulate```, and
+```use()``` which use a weak compositon to generate the remaining possible lambda partitons 
+with size up to an upperbound which the user specifies and if it finds a valid lambda 
+partiton then it outputs it and if it doesn't then the algorithm terminates.
 
 ### Saturated Ideal Counter
 
 
 ## Use and Examples
+### Lambda partition finder
+If the user wishes to find a lambda partiton associated with p(d) if there is one
+then the user inputs the polynomial into ```polynomial.in.txt```.  For example, if the user wishes
+to input the polynomial
+![Image3](/images/polynomial_ex_1.png)
 
