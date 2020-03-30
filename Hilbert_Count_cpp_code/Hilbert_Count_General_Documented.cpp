@@ -75,13 +75,14 @@ int main()
                 cout << endl;
                 return 0;
             }
-            x[3 - 1] = 0;// The rest of the lines below is the weak composition algorithm.
-            j = 3 - 2;
-            while(0 == x[j]){
-                j--;
+            // The rest of the lines below is the weak composition algorithm.
+            x[3 - 1] = 0;// Re-initialize last value of the vector back to 0 (the varible 'v' still remembers what the value of the last element was)
+            j = 1; // reinitialize j every time to 1, j is explained in the next line
+            while(0 == x[j]){// starting from index one and going backwards look for the first nonzero term
+                j--;// if the element in the j'th index is 0, then move 'up' the vector
             }
-            x[j]--;
-            x[j + 1] = 1 + v;
+            x[j]--;// First non-zero value found! Now take one away from this element
+            x[j + 1] = 1 + v; // in the element right next to it, add 1 and the value of the last element of the previous composition
         }
     }
     
