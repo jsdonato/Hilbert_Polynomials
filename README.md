@@ -21,6 +21,7 @@ From here, we now have a basis for algorithm which will use a brute force method
 to find the lambda partiton mentioned in MacAulays theorem.  Now since a Hilbert
 Polynomial is of the form mentioned in MacAulays we will note that the following 
 binomial coefficient
+
 ![Image2](/images/binomial.png)
 
 is a polynomial in d with degree \lambda-1 and with leading coefficient 1/((\lambda-1)!).
