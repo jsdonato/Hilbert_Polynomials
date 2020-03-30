@@ -81,6 +81,7 @@ One can check on their own that this is indeed the correct lambda partition asso
 with the mentioned polynomial.  Now in the case in which n=2 and n=1 the algorithm
 also outputs the number of saturated ideals associated with this ideal.  For example,
 if the Hilbert Polynomial is the following
+
 ![Image4](/images/polynomial_ex_2.png)
 
 Then once again ```polynomial.in.txt``` becomes
