@@ -90,3 +90,9 @@ int main(){
 
 	return 0;
 }
+
+
+
+/*bool is_integer(double num){ 
+	return abs(floor(num) - num) < 0.0000000001;
+}*/
