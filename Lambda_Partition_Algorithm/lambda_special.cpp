@@ -3,12 +3,18 @@
 #include <cmath>
 using namespace std;
 
+bool is_integer(double number){
+	return abs(floor(number)-number)<0.0000000001;
+}
+
 int main(){
 
 	int N=0;// number of variables -1
-	int constant =0; //constant term in a polynomial
-	int linear =0; // coefficient of the linear term in a polynomial
+	double constant =0; //constant term in a polynomial
+	double linear =0; // coefficient of the linear term in a polynomial
 	double check = 0; // this is the left hand side of the lambda criterion theorem for linear polynomials
+	bool lininteger;
+	bool constinteger;
 
 
 
@@ -17,9 +23,18 @@ int main(){
 
 	if(N==1){
 		cout << "Please Enter the value of your constant of your polynomial" << endl;
-		cout << "(There should be no terms of degree 1 or higher): This should also be an integer" << endl;//formatting 
+		cout << "(There should be no terms of degree 1 or higher)" << endl;//formatting 
 		cin >> constant;
-		if(constant > 0){//The constant here needs to be check, needs to be an integer otherwise no lambda
+		constinteger = is_integer(constant);
+		if(!constinteger){
+			cout << "This is not a Hilbert Polynomial (No lambda exists)."<<endl;//test fails, value not an integer
+			return 0;
+		}
+		if(constant <= 0){
+			cout << "This is not a Hilbert Polynomial (No lambda exists)."<<endl;//test fails, constant cant be negative or zero
+			return 0;
+		}
+		if(constant > 0){// if constant is an integer and is positive, criterion passed!
 			cout << "This is a Hilbert Polynomial!" << endl;
 			cout << "Lambda = {";// opening lambda
 			for(int i=0; i<constant; i++){//prints out what the lambda looks like as per theorem
@@ -34,28 +49,41 @@ int main(){
 		// Joe, this is where i would suspect the counting algorithm would then be called for this case.
 		//
 		}
-		if(constant <= 0){
-			cout << "This is not a Hilbert Polynomial (No lambda exists)."<<endl;//test fails
-			return 0;
-		}
 	}
 	if(N==2){
+
 		cout << "You have a first degree polynomial of the form p= Md-r"<< endl;// Aide for user to know what value to plug in for the constant term
 		cout << "Please Enter the value of r (Should be an integer)" << endl;
 		cout << "r = ";
-		cin >> constant; // code needs to check that this value is an integer otherwise no lambda
+		cin >> constant; 
+		constinteger = is_integer(constant);
 		cout << "Please Enter the value of M (Should be an integer)" << endl;
 		cout << "M = ";
-		cin >> linear; // code needs to check that this is an integer, otherwise no lambda
+		cin >> linear; 
+
+		if(!constinteger){
+			cout << "This is not a Hilbert Polynomial (No lambda exists)."<<endl;//test fails, constant not an integer
+			return 0;
+		}
+
+		lininteger = is_integer(linear);
+		if(!lininteger){
+			cout << "This is not a Hilbert Polynomial (No lambda exists)."<<endl;//test fails, linear coefficient not an integer
+			return 0;
+		}
+
 		check = (0.5)*((linear*linear)-(3*linear));// lambda criterion as per theorem
+		
 		if(linear<0 || constant>check){
 			cout << "This is not a Hilbert Polynomial (No lambda exists)"<<endl;// test fails, by theorem
 			return 0;
 		}
+
 		if(linear==0 && constant ==0 ){
 			cout << "This is not a Hilbert Polynomial (No lambda exists)"<<endl;// test fails, every term zero
 			return 0;
 		}
+
 		if(constant<=check){//test passes
 			cout << "This is a Hilbert Polynomial!" << endl;
 			cout << "Lamda = { ";	//Lambda opens
@@ -91,8 +119,3 @@ int main(){
 	return 0;
 }
 
-
-
-/*bool is_integer(double num){ 
-	return abs(floor(num) - num) < 0.0000000001;
-}*/
