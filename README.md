@@ -140,4 +140,18 @@ Please enter your value of N. (Number of variables -1)
 For N=2, the number of saturated ideals for this particular lambda sequence is 90
 ```
 
+If instead the user wants to input the lambda sequence instead, then for this 
+example, the input of the program will appear as
+```
+Please enter the number of 2's, in your lambda partition
+3
+Please enter the number of 1's, in your lambda partition
+2
+```
+
+and the output will appear as in the last example
+
+```
+Number of saturated ideals for this particular lambda sequence is 90
+```
 
