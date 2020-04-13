@@ -55,6 +55,18 @@ monomial ideals for some given Hilbert Polynomial. This is done by directly usin
 the lambda sequence of the Hilbert Polynomial. This, of course, can be determined
 by the algortihm explained above or inputed by the user. 
 
+```Hilbert_Count_General_Documented``` will take in this specific lambda sequence 
+and will N. If N is greater than 2, then the function does nothing since no general 
+count is developed yet for N greater than 2. 
+
+In the case that N=1, the algorithm counts the number of '1's in the lambda sequence,
+say r (if it is not already specified by the user) and calculates the value of the
+number of weak compositons of r into 2 (as per theorem).
+
+In the case that N=2,  the algorithm again counts the number of ones in the lambda 
+sequence (r) and the number of 2's in the lambda sequence (p).
+Using the value p, the algorithm first finds "(p+2) choose 2"
+
 
 ## Use and Examples
 ### Lambda partition finder
