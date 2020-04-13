@@ -66,9 +66,26 @@ number of weak compositons of r into 2 (as per theorem).
 In the case that N=2,  the algorithm again counts the number of ones in the lambda 
 sequence ```r``` and the number of 2's in the lambda sequence ```p```.
 Using the value p, the algorithm first finds "(p+2) choose 2" which is set to ```val1```
-Next, the algorithm finds 
+This corresponds to the choose function in the following formula which is the 
+general count for N=2
+
 ![Image5](/images/SaturatedN2Count.png)
 
+Now to find the value of the large sum, the algorithm takes the value or ```r```
+and uses the ```pre_comp``` function that initializes a vector of size ```r```+1
+and for the i'th element of the vector, finds the number of integer partitions of i.
+(Note that there is a second function in this code, which is called within ```pre_comp```
+and is a recursive function that does most of the work for finding the number of 
+integer partitions for each i)
+
+The code then finds each weak composition of ```r``` into 3. Each weak composition 
+is represented as a vector of size 3. (This corresponds to the 3-tuple (kx_i, ky_i,kz_i))
+in the photo above. Then, for this weak composition, the code looks at each element
+of the vector, and finds the number of integer partitions of that value. This is done
+by using the precomputed values mentioned earlier. This is done 3 times for each element 
+in the weak composition vector. The values are mulitplied, this value is then
+stored in ```sum``` and this is done for each weak composition.
+```val1``` *```sum``` then represents the picture showed above. 
 
 ## Use and Examples
 ### Lambda partition finder
