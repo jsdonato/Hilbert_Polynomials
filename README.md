@@ -50,6 +50,11 @@ partiton then it outputs it and if it doesn't then the algorithm terminates.
 
 ### Saturated Ideal Counter
 
+For the cases where N=1 or N=2, our code will determine the number of saturated 
+monomial ideals for some given Hilbert Polynomial. This is done by directly using 
+the lambda sequence of the Hilbert Polynomial. This, of course, can be determined
+by the algortihm explained above or inputed by the user. 
+
 
 ## Use and Examples
 ### Lambda partition finder
