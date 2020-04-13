@@ -67,6 +67,7 @@ In the case that N=2,  the algorithm again counts the number of ones in the lamb
 sequence ```r``` and the number of 2's in the lambda sequence ```p```.
 Using the value p, the algorithm first finds "(p+2) choose 2" which is set to ```val1```
 Next, the algorithm finds 
+![Image5](/images/SaturatedN2Count.png)
 
 
 ## Use and Examples
