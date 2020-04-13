@@ -64,8 +64,9 @@ say r (if it is not already specified by the user) and calculates the value of t
 number of weak compositons of r into 2 (as per theorem).
 
 In the case that N=2,  the algorithm again counts the number of ones in the lambda 
-sequence (r) and the number of 2's in the lambda sequence (p).
-Using the value p, the algorithm first finds "(p+2) choose 2"
+sequence ```r``` and the number of 2's in the lambda sequence ```p```.
+Using the value p, the algorithm first finds "(p+2) choose 2" which is set to ```val1```
+Next, the algorithm finds 
 
 
 ## Use and Examples
