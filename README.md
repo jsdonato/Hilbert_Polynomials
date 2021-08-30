@@ -99,7 +99,7 @@ then in ```polynomial.in.txt``` we write
 ```
 3
 3 0.5
-2 -2.5
+2 2.5
 1 -2
 0 7
 ```
