@@ -9,6 +9,12 @@ bool check_good_lambda (vector<unsigned long long> lambda_partition, int N) {
     // Check the criterion 3a
     else if (lambda_partition.size() <= 1) return true;
     
+    // Check criterion 7a
+    else if (lambda_partition.size() == 0) return true;
+
+    //Check criterion 7b
+    else if (lambda_partition.size() == N + 1) return true;
+
     // r is the number of lambdas
     size_t r = lambda_partition.size();
     
