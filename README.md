@@ -61,7 +61,8 @@ count is developed yet for N greater than 2.
 
 For those interested in understanding where the counts for N=1 and N=2 come from, and their 
 proofs, please refer to "The sum of the Betti numbers of smooth Hilbert Schemes" in the 
-Journal of Algebraic Combinatorics.
+Journal of Algebraic Combinatorics. The paper can be found through the following link
+https://link.springer.com/article/10.1007%2Fs10801-021-01055-5 
 
 In the case that N=1, the algorithm counts the number of '1's in the lambda sequence,
 say r (if it is not already specified by the user) and calculates the value of the
