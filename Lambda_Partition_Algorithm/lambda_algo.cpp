@@ -1,15 +1,17 @@
-
-
 #include "lambda_algo.hpp"
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-lambda_algo::lambda_algo(Polynomial &p){
+lambda_algo::lambda_algo(Polynomial &p, size_t UPPER_BOUND){
     success = false;
+    upper_bound = UPPER_BOUND;
     
     check_lambda(p);
-    determine_upperbound();
+    if (upper_bound <= lower_bound) {
+        cout << "ERROR: UPPER_BOUND is not strictly greater than " << lower_bound << "\n\n";
+	exit(0);
+    }
     
     initialize_evaluators(p);
     initialize_targets(p);
@@ -17,10 +19,6 @@ lambda_algo::lambda_algo(Polynomial &p){
     zero_run();
     if (success == true){
         cout << "SUCCESS! Lambda partition: {";
-        /*for (int i = 0; i < lower_bound - 1; i++){
-            cout << poly_degree + 1 << ", ";
-        }
-        cout << poly_degree + 1 << "}\n";*/
         for (int i = 0; i < lower_bound; i++){
             result.push_back(poly_degree + 1);
         }
@@ -38,20 +36,15 @@ lambda_algo::lambda_algo(Polynomial &p){
             run();
         }
     }
+
+    if (!success) {
+       result = {}; 
+    }
 }
 
 void lambda_algo::check_lambda(Polynomial &p) {
     poly_degree = p.degree();
     lower_bound = ceil((double)t.factorial(poly_degree) * p.first_coeff());
-}
-
-
-void lambda_algo::determine_upperbound(){
-    int M = 0;
-    cout << "INPUT UPPER BOUND FOR LAMBDA PARTITION: ";
-    cout << '\n' << "(Note: It should be greater than " << lower_bound << " )" << '\n';
-    cin >> M;
-    upper_bound = M;
 }
 
 void lambda_algo::initialize_evaluators(Polynomial &p){
@@ -104,10 +97,6 @@ void lambda_algo::first_run(){
             }
             else if (i == targets.size() - 1 && abs(sum - targets[i]) < .0000000001){
                 cout << "SUCCESS! Lambda partition: {";
-                /*for (int i = 0; i < lower_bound; i++){
-                    cout << poly_degree + 1 << ", ";
-                }
-                cout << lambda << "}\n";*/
                 for (int i = 0; i < lower_bound; i++){
                     result.push_back(poly_degree + 1);
                 }

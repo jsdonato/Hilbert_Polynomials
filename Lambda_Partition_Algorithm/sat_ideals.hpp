@@ -18,13 +18,9 @@ class sat_ideals{
 public:
     sat_ideals(int p, int r);
     
-    sat_ideals();
-    
     int p(int n, int m);
     
     vector<int> pre_comp(int rows);
-    
-    void input_N();
     
     void var_2();
     

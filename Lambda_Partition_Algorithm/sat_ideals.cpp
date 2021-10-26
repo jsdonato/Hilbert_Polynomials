@@ -10,40 +10,19 @@
 #include <vector>
 #include <iostream>
 
-sat_ideals::sat_ideals(int p, int r){
+sat_ideals::sat_ideals(int p, int r, int N){
     P = p;
     R = r;
-    input_N();
+    variables = N;
     if (variables == 1){
         cout << "For N=1, the number of saturated ideals for this particular lambda sequence is ";
         cout << R + 1;
-        cout <<endl;
+        cout << endl;
     }
     
     else if (variables == 2){
         var_2();
     }
-}
-
-sat_ideals::sat_ideals(){
-    input_N();
-    
-    if (variables == 1){
-        cout << "Please enter the number of 1's in your lambda partition" << endl;
-        cin >> R;
-        cout << "For N=1, the number of saturated ideals for this particular lambda sequence is ";
-        cout << R+1;
-        cout <<endl;
-    }
-    
-    else if (variables == 2){
-        cout << "Please enter the number of 2's, in your lambda partition" << endl;
-        cin >> P;
-        cout << "Please enter the number of 1's, in your lambda partition" << endl;
-        cin >> R;
-        var_2();
-    }
-    
 }
 
 int sat_ideals::p (int n, int m){
@@ -66,15 +45,6 @@ vector<int> sat_ideals::pre_comp(int rows){//function that pre-computes the valu
         vec[i] = p(i,i);
     }
     return vec;
-}
-
-void sat_ideals::input_N(){
-    cout << "Please enter your value of N. (Number of variables -1)" << endl;
-    cin >> variables;
-    while(variables!= 1 && variables !=2){
-        cout<< "Please enter either a value of 1 or 2" << endl;
-        cin>> variables;
-    }
 }
 
 void sat_ideals::var_2(){
@@ -106,7 +76,7 @@ void sat_ideals::var_2(){
         
         v=x[3 - 1];
         if(R == v){
-            cout<<"For N=2, the number of saturated ideals for this particular lambda sequence is ";
+            cout << "For N=2, the number of saturated ideals for this particular lambda sequence is ";
             cout << val1*sum;
             cout << endl;
             return;

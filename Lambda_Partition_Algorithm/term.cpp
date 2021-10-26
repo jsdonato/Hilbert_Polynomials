@@ -14,5 +14,3 @@ double Term::Coef(){
 int Term::Deg(){
     return degree;
 }
-    
-

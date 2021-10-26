@@ -1,5 +1,3 @@
-
-
 #include "pascal.hpp"
 
 Pascal::Pascal(){
