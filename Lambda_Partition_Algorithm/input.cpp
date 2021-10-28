@@ -113,7 +113,7 @@ void p_helper() {
 	exit(0);
     }
     
-    std::regex re("[ :,]");
+    std::regex re("[ d,]");
     std::sregex_token_iterator first{POLY.value().begin(), POLY.value().end(), re, -1}, last;
     std::vector<std::string> tokens{first, last};
     tokens.erase(std::remove(tokens.begin(), tokens.end(), "\0"), tokens.end());
@@ -199,8 +199,8 @@ void c_helper() {
 	return;
     }
     else {
-        if (N <= 2 && result[0] <= 2) {
-	    sat_ideals(count(result.begin(), result.end(), 2), count(result.begin(), result.end(), 1), N);
+        if (N <= 2 && partition[0] <= 2) {
+	    sat_ideals(count(partition.begin(), partition.end(), 2), count(partition.begin(), partition.end(), 1), N);
 	}
 	else {
 	    cout << "N is strictly greater than 2 or the largest element in the resulting lambda partition";
