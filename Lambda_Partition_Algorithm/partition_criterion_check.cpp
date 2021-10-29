@@ -3,17 +3,17 @@
 
 using namespace std;
 
-bool check_good_lambda (vector<unsigned long long> lambda_partition, int N) {
+optional<string> check_good_lambda (vector<unsigned long long> lambda_partition, int N) {
     // Check the first criterion
     if (N >= 0 && N <= 2) return true;
     // Check the criterion 3a
-    else if (lambda_partition.size() <= 1) return true;
+    else if (lambda_partition.size() <= 1) return "This lambda partition satisfies criterion 3a";
     
     // Check criterion 7a
-    else if (lambda_partition.size() == 0) return true;
+    else if (lambda_partition.size() == 0) return "This lambda partition satisfies criterion 7a";
 
     //Check criterion 7b
-    else if (lambda_partition.size() == N + 1) return true;
+    else if (lambda_partition.size() == N + 1) return "This lambda partition satisfies criterion 7b";
 
     // r is the number of lambdas
     size_t r = lambda_partition.size();
@@ -37,12 +37,12 @@ bool check_good_lambda (vector<unsigned long long> lambda_partition, int N) {
     
     size_t index_of_smallest_lambda = compact_form.size() - 1;
     // Check criterion 2
-    if (compact_form[compact_form.size() - 1].first >= 2) return true;
+    if (compact_form[compact_form.size() - 1].first >= 2) return "This lambda partition satisfies criterion 2";
     // Check criterion 3b
     else if (compact_form[0].first == N
              && compact_form[0].second == r - 2
              && compact_form[index_of_smallest_lambda].first == 1
-             && compact_form[index_of_smallest_lambda].second == 1) return true;
+             && compact_form[index_of_smallest_lambda].second == 1) return "This lambda partition satisfies criterion 3b";
     else {
         // Check criterion 4
         if (r >= 3) {
@@ -52,11 +52,11 @@ bool check_good_lambda (vector<unsigned long long> lambda_partition, int N) {
             else if (compact_form.size() == 3 && compact_form[0].first == N
                      && compact_form[0].second <= r - 3 && compact_form[1].first > 2
                      && compact_form[2].first == 1 && compact_form[2].second == 1)
-                return true;
+                return "This lambda partition satisfies criterion 4";
             // Check criterion 6
             else if (compact_form.size() == 2 && compact_form[0].first == N
                      && compact_form[1].first == 1 && compact_form[1].second == 3)
-                return true;
+                return "This lambda partition satisfies criterion 6";
         }
         // Check criterion 5
         if (r >= 5) {
@@ -65,11 +65,11 @@ bool check_good_lambda (vector<unsigned long long> lambda_partition, int N) {
             else if (compact_form.size() == 3 && compact_form[0].first == N
                      && compact_form[0].second <= r - 5 && compact_form[1].first == 2
                      && compact_form[2].first == 1 && compact_form[2].second == 1)
-                return true;
+                return "This lambda partition satisfies criterion 5";
         }
     }
     
-    return false;
+    return nullopt;
 };
 
 
