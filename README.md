@@ -55,8 +55,8 @@ monomial ideals for some given Hilbert Polynomial. This is done by directly usin
 the lambda sequence of the Hilbert Polynomial. This, of course, can be determined
 by the algortihm explained above or inputed by the user. 
 
-```Hilbert_Count_General_Documented``` will take in this specific lambda sequence 
-and will N. If N is greater than 2, then the function does nothing since no general 
+```lambda_algo(Polynomial p, size_t N)``` will take in this specific lambda sequence 
+and N. If N is greater than 2, then the function does nothing since no general 
 count is developed yet for N greater than 2. 
 
 For those interested in understanding where the counts for N=1 and N=2 come from, and their 
