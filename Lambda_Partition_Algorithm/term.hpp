@@ -7,9 +7,9 @@ public:
     
     Term(double coefficent, int deg);
     
-    double Coef();
+    double Coef() const;
     
-    int Deg();
+    int Deg() const;
     
 private:
     
@@ -19,7 +19,7 @@ private:
 
 };
 
-struct term_deg_comp() {
+struct term_deg_comp {
     bool operator() (const Term& t1, const Term& t2) {
         return t1.Deg() > t2.Deg();
     }

@@ -1,8 +1,10 @@
 #include "polynomial.hpp"
+
+using namespace std;
 Polynomial::Polynomial(vector<Term> poly){
     sort(poly.begin(), poly.end(), term_deg_comp());        
 
-    uint32_t coeff_sum = 0;
+    double coeff_sum = 0;
     for (size_t i = 0; i < poly.size(); i++) {
         uint32_t curr_deg = poly[i].Deg();
 	coeff_sum += poly[i].Coef();
@@ -30,22 +32,29 @@ double Polynomial::first_coeff(){
 }
 
 ostream& operator<<(ostream& os, const Polynomial& poly) {
+    double coef = poly.polynomial[0].Coef();
+    int deg = poly.polynomial[0].Deg();
     for (int i = 0; i < poly.polynomial.size() - 1; i++) {
-        if (poly.polynomial.Deg() == 1) {
-	    os << poly.polynomial[i].Coef() << "d + ";
+        if (poly.polynomial[i+1].Coef() >= 0) {
+	    if (deg == 1) os << coef << "d + ";
+	    else os << coef << "d^" << deg << " + ";
+	    coef = poly.polynomial[i+1].Coef();
 	}
 	else {
-	    os << poly.polynomial[i].Coef() << "d^" << poly.polynomial[i].Deg() << " + "; 
-        }
-    }
-    if (poly.polynomial.Deg() == 1) {
-        os << poly.polynomial[i].Coef();
+	    if (deg == 1) os << coef << "d - ";
+	    else os << coef << "d^" << deg << " - ";
+            coef = abs(poly.polynomial[i+1].Coef());
+	}
+        deg = poly.polynomial[i+1].Deg();
     } 
-    else if (poly.polynomial.Deg() == 1) {
-        os << poly.polynomial[i].Coef() << "d";
+    if (deg == 0) {
+        os << coef;
+    } 
+    else if (deg == 1) {
+        os << coef << "d";
     }
     else {
-        os << poly.polynomial[poly.polynomial.size() - 1].Coef() << "d^" << poly.polynomial[poly.polynomial.size() - 1].Deg();  
+        os << coef << "d^" << deg;  
     }
     return os;
 }

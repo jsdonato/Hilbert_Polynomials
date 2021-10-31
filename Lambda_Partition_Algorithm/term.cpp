@@ -7,10 +7,10 @@ Term::Term(double coefficent, int deg){
     degree = deg;
 }
     
-double Term::Coef(){
+double Term::Coef() const {
     return coef;
 }
     
-int Term::Deg(){
+int Term::Deg() const {
     return degree;
 }

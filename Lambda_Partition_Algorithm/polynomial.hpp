@@ -6,6 +6,7 @@
 #include <vector>
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 #include "term.hpp"
 using namespace std;
 

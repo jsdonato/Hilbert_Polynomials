@@ -16,7 +16,7 @@ using namespace std;
 
 class sat_ideals{
 public:
-    sat_ideals(int p, int r);
+    sat_ideals(int p, int r, int N);
     
     int p(int n, int m);
     

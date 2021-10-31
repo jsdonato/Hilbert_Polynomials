@@ -9,7 +9,7 @@ lambda_algo::lambda_algo(Polynomial &p, size_t UPPER_BOUND){
     
     check_lambda(p);
     if (upper_bound <= lower_bound) {
-        cout << "ERROR: UPPER_BOUND is not strictly greater than " << lower_bound << "\n\n";
+        cout << "ERROR: UPPER_BOUND is not strictly greater than " << lower_bound << " (the lower bound)."<<"\n\n";
 	exit(0);
     }
     
@@ -69,7 +69,7 @@ void lambda_algo::zero_run(){
     int lambda_max = (int)poly_degree + 1;
     
     for (int i = 0; i < targets.size(); i++){
-        unsigned long long sum = 0;
+        uint32_t sum = 0;
         for (int j = 1; j <= lower_bound; j++){
             sum += t.Binomial(evaluators[i] + lambda_max - j, lambda_max - 1);
         }
@@ -90,7 +90,7 @@ void lambda_algo::zero_run(){
 void lambda_algo::first_run(){
     for (int lambda = (int)poly_degree; lambda > 0; lambda--){
         for (int i = 0; i < targets.size(); i++){
-            unsigned long long sum = 0;
+            uint32_t sum = 0;
             sum = sum_of_first[i] + t.Binomial(evaluators[i] + lambda - ((int)lower_bound + 1), lambda - 1);
             if (abs(sum - targets[i]) > .0000000001){
                 break;
@@ -117,8 +117,8 @@ void lambda_algo::first_run(){
 }
 
 
-unsigned long long lambda_algo::accumulate(vector<int> &x, int d){
-    unsigned long long sum = 0;
+uint32_t lambda_algo::accumulate(vector<int> &x, int d){
+    uint32_t sum = 0;
     int k = 1;
     for (int i = 0; i < x.size(); i++){
         for (int j = 0; j < x[i]; j++){
@@ -131,7 +131,7 @@ unsigned long long lambda_algo::accumulate(vector<int> &x, int d){
 
 void lambda_algo::use(vector<int> &x){
     for (int i = 0; i < targets.size(); i++){
-        unsigned long long num = sum_of_first[i] + accumulate(x, evaluators[i]);
+        uint32_t num = sum_of_first[i] + accumulate(x, evaluators[i]);
         
         if (abs(num - targets[i]) > .0000000001){
             return;
@@ -199,7 +199,7 @@ void lambda_algo::run(){
     }
 }
 
-vector<unsigned long long> lambda_algo::Result(){
+vector<uint32_t> lambda_algo::Result(){
     return result;
 }
 

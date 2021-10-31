@@ -11,7 +11,7 @@ using namespace std;
 
 class lambda_algo{
 public:
-    lambda_algo(Polynomial &p);
+    lambda_algo(Polynomial &p, size_t UPPER_BOUND);
     
     void check_lambda(Polynomial &p);
     
@@ -25,7 +25,7 @@ public:
     
     void first_run();
     
-    unsigned long long accumulate(vector<int> &x, int d);
+    uint32_t accumulate(vector<int> &x, int d);
     
     void use(vector<int> &x);
     
@@ -33,15 +33,15 @@ public:
     
     void run();
     
-    vector<unsigned long long> Result();
+    vector<uint32_t> Result();
 private:
     Pascal t;
     
     vector<double> targets;
     vector<int> evaluators;
-    vector<unsigned long long> sum_of_first;
+    vector<uint32_t> sum_of_first;
     
-    vector<unsigned long long> result;
+    vector<uint32_t> result;
    
     int upper_bound;
     unsigned long long lower_bound;

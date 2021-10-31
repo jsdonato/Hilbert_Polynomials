@@ -8,6 +8,12 @@
 #include <regex>
 #include <optional>
 #include <algorithm>
+#include <cctype>
+#include "partition_criterion_check.hpp"
+#include "lambda_algo.hpp"
+#include "polynomial.hpp"
+#include "term.hpp"
+#include "sat_ideals.hpp"
 using namespace std;
 
 class Input {
@@ -19,7 +25,7 @@ private:
     string input_file_name;
     vector<Term> polynomial;
     vector<uint32_t> partition;
-    optional<string> POLY = nullopt;
+    optional<string> POLYNOMIAL = nullopt;
     optional<string> PARTITION = nullopt;
     optional<size_t> N = nullopt;
     optional<size_t> UPPER_BOUND = nullopt;
@@ -28,6 +34,7 @@ private:
     bool input_partition_smooth = false;
     
     void get_options(int argc, char **argv); 
+    void read();
     void p_helper();
     void cs_read();
     void c_helper();

@@ -1,9 +1,8 @@
-#include <iostream>
-#include <vector>
+#include "partition_criterion_check.hpp"
 
 using namespace std;
 
-optional<string> check_good_lambda (vector<unsigned long long> lambda_partition, int N) {
+optional<string> check_good_lambda (vector<uint32_t> lambda_partition, int N) {
     // Check the first criterion
     if (N >= 0 && N <= 2) return "1";
     // Check the criterion 3a
@@ -45,38 +44,29 @@ optional<string> check_good_lambda (vector<unsigned long long> lambda_partition,
              && compact_form[index_of_smallest_lambda].second == 1) return "3b";
     else {
         // Check criterion 4
-        if (r >= 3) {
+        if (r >= 2) {
             if (compact_form.size() == 2 && compact_form[0].first < N
                 && compact_form[0].first > 2 && compact_form[1].first == 1
-                && compact_form[1].second == 1) return true;
+                && compact_form[1].second == 1) return "4";
             else if (compact_form.size() == 3 && compact_form[0].first == N
                      && compact_form[0].second <= r - 3 && compact_form[1].first > 2
                      && compact_form[2].first == 1 && compact_form[2].second == 1)
                 return "4";
-            // Check criterion 6
-            else if (compact_form.size() == 2 && compact_form[0].first == N
-                     && compact_form[1].first == 1 && compact_form[1].second == 3)
-                return "6";
+	}
+        // Check criterion 6
+        if (r >= 3) {
+	    if (compact_form.size() == 2 && compact_form[0].first == N
+                 && compact_form[1].first == 1 && compact_form[1].second == 3) return "6";
         }
         // Check criterion 5
         if (r >= 5) {
             if (compact_form.size() == 2 && compact_form[0].first == 2
-                && compact_form[1].first == 1 && compact_form[1].second == 1) return true;
+                && compact_form[1].first == 1 && compact_form[1].second == 1) return "5";
             else if (compact_form.size() == 3 && compact_form[0].first == N
                      && compact_form[0].second <= r - 5 && compact_form[1].first == 2
-                     && compact_form[2].first == 1 && compact_form[2].second == 1)
-                return "5";
+                     && compact_form[2].first == 1 && compact_form[2].second == 1) return "5";
         }
     }
     
     return nullopt;
-};
-
-
-
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
 }
