@@ -26,8 +26,9 @@ binomial coefficient
 
 is a polynomial in d with degree \lambda-1 and with leading coefficient 1/((\lambda-1)!).
 From here, if p(d) is indeed a Hilbert polynomial then we can multiply p(d) by 
-(\lambda-1)! to recover the number of maximal terms in our lambda partiton or in
-other words the number of leading terms in our lambda partiton which are equivalent.
+(\lambda-1)! to recover the number of maximal terms in our lambda partiton or, in
+other words, the number of leading terms in our lambda partiton which are equivalent 
+which is also equivalent to the lower bound of the size of our lambda partition.
 From this, we now have the leading binomial terms in our sum mentioned in MacAulays
 theorem and we can precompute the first couple sums of those evaluated at each 
 x_0,x_1,...,x_n so that evaluating our guesses in the future is faster.  The values
@@ -93,30 +94,39 @@ stored in ```sum``` and this is done for each weak composition.
 ```val1``` *```sum``` then represents the picture showed above. 
 
 ## Use and Examples
-### Lambda partition finder
-If the user wishes to find a lambda partiton associated with p(d) if there is one
-then the user inputs the polynomial into ```polynomial.in.txt```.  For example, if the user wishes
-to input the polynomial
+After building the code by running `bash build.sh` in the command line, the user runs the code by running `./hilbert -<option> input_file_name.txt`.
+The following table describes the possible options and their uses.  Strictly one option is allowed.
+| FLag | Use |
+| :---: | :---: | 
+| `-p`,`--polynomial` | User inputs a polynomial, N, and an upper bound to recover a lambda partition.  If its recovered, its count and smoothness is determined.|
+| `-c`,`--count` | User inputs an N and a lambda partition to recover a count and determine its smoothness. |
+| `-s`,`--smooth` | User inputs an N and a lambda partition to determine its smoothness. |
+
+To input the mentioned parameters in the input file, the user must consider the following input format.  Lines beginnning with `#` will be ignored and interpreted as comments.  Outside of this, lines which are not to be ignored will be of the form `VAR_NAME : VAR_VALUE` where `VAR_NAME` can be any of the strings `POLYNOMIAL`, `N`, `UPPER_BOUND`, or `PARTITION`.  For `N` or `UPPER_BOUND`, a positive integer must take on `VAR_VALUE`.  On the other hand, for `PARTITION`, the string `VAR_VALUE` must take the form `l_0^n_0, l_1^n_1,...,l_k^n_k` where `l_i` is the positive integer value in the lambda partition and `n_i` is the number of occurences.  On the other hand, if `VAR_NAME` takes is equivalent to `POLYNOMIAL` then the associated `VAR_VALUE` must take on the form `c_0dn_0, c_1dn_1,...,c_kdn_k` where `c_idn_i` represents the polynomial term with coefficient `c_i` and non-negative integer degree `n_i` being added to the polynomial.  More specifically, the input `c_0dn_0, c_1dn_1,...,c_kdn_k` represents the polynomaial `c_0d^n_0 + c_1d^n_1 + ... + c_kd^n_k`.
+
+### -p flag
+For example, if the user wishes to recover a lambda partition from the following polynomial then they can run the command `./hilbert -p polynomial.in.txt`.
 
 ![Image3](/images/polynomial_ex_1.png)
 
-then in ```polynomial.in.txt``` we write 
+Then in ```polynomial.in.txt``` we write 
 ```
-3
-3 0.5
-2 2.5
-1 -2
-0 7
+# comment
+POLY : 0.5d3, 2.5d2, -2d1, 7d0       
+# comment
+N:5
+#comment
+UPPER_BOUND     : 8
 ```
 and in running the algorithm we get the following output
 ```
-Press 1 to input a polynomial (in polynomial.in.txt)
-Press 2 to input a lambda partiton
-1
-INPUT UPPER BOUND FOR LAMBDA PARTITION: 
-(Note: It should be greater than 3 )
-8
+UPPER_BOUND ENTERED BY USER: 8
+N ENTERED BY USER: 5
+POLYNOMIAL ENTERED BY USER: 0.5d^3 + 0.5d^3 - 2.5d^2 + -2d
 SUCCESS! Lambda partition: {4, 4, 4, 3, 3, 1, 1}
+N is strictly greater than 2 or the largest element in the resulting lambda partition
+is greater than 2.  Count will not be computed.
+The resulting lambda partition is not smooth.
 ```
 One can check on their own that this is indeed the correct lambda partition associated 
 with the mentioned polynomial.  Now in the case in which n=2 and n=1 the algorithm
@@ -127,36 +137,51 @@ if the Hilbert Polynomial is the following
 
 Then once again ```polynomial.in.txt``` becomes
 ```
-1
-1 3
-0 2
+# comment
+POLYNOMIAL : 3d1,2d0                
+# comment
+N:2
+#comment
+UPPER_BOUND     : 6
 ```
 And we get the following output
 ```
-Press 1 to input a polynomial (in polynomial.in.txt)
-Press 2 to input a lambda partiton
-1
-INPUT UPPER BOUND FOR LAMBDA PARTITION: 
-(Note: It should be greater than 3 )
-6
+UPPER_BOUND ENTERED BY USER: 6
+N ENTERED BY USER: 2
+POLYNOMIAL ENTERED BY USER: 3d + 2
 SUCCESS! Lambda partition: {2, 2, 2, 1, 1}
-Please enter your value of N. (Number of variables -1)
-2
 For N=2, the number of saturated ideals for this particular lambda sequence is 90
+The resulting lambda partition is smooth and satisfies condition 1.
 ```
+### -c flag
+If instead the user wants to input the lambda sequence `{2,2,2,2,1,1,1}` and recover its count and if its smooth then they can run the command `./hilbert -c partition.in.txt` where `partition.in.txt` contains
+```
+# comment
+PARTITION : 2^4,1^3                 
+# comment
+N:2
+#comment
+```
+and we get the following output
 
-If instead the user wants to input the lambda sequence instead, then for this 
-example, the input of the program will appear as
 ```
-Please enter the number of 2's, in your lambda partition
-3
-Please enter the number of 1's, in your lambda partition
-2
+N ENTERED BY USER: 2
+PARTITION ENTERED BY USER: 2 2 2 2 1 1 1 
+For N=2, the number of saturated ideals for this particular lambda sequence is 330
+The resulting lambda partition is smooth and satisfies condition 1.
 ```
-
-and the output will appear as in the last example
-
+### -s flag
+If instead the user wants to input the lambda sequence `{5,5,5,5,5,2,2,2,2,1}` determine if its smooth then they can run the command `./hilbert -c partition.in.txt` where `partition.in.txt` contains
 ```
-Number of saturated ideals for this particular lambda sequence is 90
+# comment
+PARTITION : 5^5,2^4,1^1             
+# comment
+N:5
+#comment
 ```
-
+and we get the following output
+```
+N ENTERED BY USER: 5
+PARTITION ENTERED BY USER: 5 5 5 5 5 2 2 2 2 1 
+The resulting lambda partition is smooth and satisfies condition 5.
+```
