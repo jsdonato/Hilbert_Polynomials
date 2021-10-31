@@ -112,7 +112,7 @@ For example, if the user wishes to recover a lambda partition from the following
 Then in ```polynomial.in.txt``` we write 
 ```
 # comment
-POLY : 0.5d3, 2.5d2, -2d1, 7d0       
+POLYNOMIAL : 0.5d3, 2.5d2, -2d1, 7d0       
 # comment
 N:5
 #comment
