@@ -1,0 +1,6 @@
+# comment
+POLYNOMIAL : 3d1,2d0                
+# comment
+N:2
+#comment
+UPPER_BOUND     : 6

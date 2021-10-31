@@ -1,0 +1,6 @@
+# comment
+POLYNOMIAL : 0.5d3, 2.5d2, -2d1, 7d0       
+# comment
+N:5
+#comment
+UPPER_BOUND     : 8

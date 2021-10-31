@@ -1,0 +1,5 @@
+# comment
+PARTITION : 2^4,1^3                 
+# comment
+N:2
+#comment

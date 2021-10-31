@@ -1,5 +1,3 @@
-
-
 #ifndef lambda_algo_hpp
 #define lambda_algo_hpp
 
@@ -25,7 +23,7 @@ public:
     
     void first_run();
     
-    uint32_t accumulate(vector<int> &x, int d);
+    uint64_t accumulate(vector<int> &x, int d);
     
     void use(vector<int> &x);
     
@@ -33,18 +31,18 @@ public:
     
     void run();
     
-    vector<uint32_t> Result();
+    vector<uint64_t> Result();
 private:
     Pascal t;
     
     vector<double> targets;
     vector<int> evaluators;
-    vector<uint32_t> sum_of_first;
+    vector<uint64_t> sum_of_first;
     
-    vector<uint32_t> result;
+    vector<uint64_t> result;
    
     int upper_bound;
-    unsigned long long lower_bound;
+    uint64_t lower_bound;
     size_t poly_degree;
     
     bool success;

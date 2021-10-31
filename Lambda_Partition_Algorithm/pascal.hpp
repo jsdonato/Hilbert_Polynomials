@@ -11,15 +11,15 @@ public:
     
     Pascal();
     
-    unsigned long long Binomial(int n, int k);
+    uint64_t Binomial(int n, int k);
     
-    unsigned long long factorial(size_t n);
+    uint64_t factorial(size_t n);
     
 private:
     
-    vector<vector<unsigned long long>> p_triangle;
+    vector<vector<uint64_t>> p_triangle;
     
-    vector<unsigned long long> fact;
+    vector<uint64_t> fact;
 
 };
 

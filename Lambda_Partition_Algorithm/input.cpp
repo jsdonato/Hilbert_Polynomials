@@ -48,11 +48,11 @@ void Input::get_options(int argc, char **argv) {
                 exit(1);
         }
 	if (int(input_polynomial_partition) + int(input_partition_count) + int(input_partition_smooth) > 1) {
-	    cout << "ERROR: strictly one of the options -p , -c , -s is allowed\n\n";
+	    cout << "ERROR: strictly one of the options -p , -c , -s is allowed\n";
 	    exit(0);
 	}
 	else if (int(input_polynomial_partition) + int(input_partition_count) + int(input_partition_smooth) == 0) {
-            cout << "ERROR: must choose strictly one of the following options: -p , -c , -s\n\n";
+            cout << "ERROR: must choose strictly one of the following options: -p , -c , -s\n";
 	    exit(0);
 	}
     } 
@@ -88,7 +88,7 @@ void Input::read() {
             string var = entry.substr(0, entry.find(':')+1);
 
 	    if (count(entry.begin(), entry.end(), ':') != 1 || (var != "POLYNOMIAL:" && var != "N:" && var != "UPPER_BOUND:" && var != "PARTITION:")) {
-	        cout << "ERROR: syntax error on line " << i << " of " << input_file_name << "\n\n";
+	        cout << "ERROR: syntax error on line " << i << " of " << input_file_name << "\n";
                 exit(0);
 	    }
 	    else if (var == "POLYNOMIAL:") POLYNOMIAL = validList(entry.substr(colon_pos+1), 'd'); 
@@ -104,15 +104,15 @@ void Input::read() {
 
 void Input::p_helper() {
     if (!POLYNOMIAL) {
-        cout << "ERROR: \"POLYNOMIAL\" variable was not entered correctly\n\n";
+        cout << "ERROR: \"POLYNOMIAL\" variable was not entered correctly\n";
 	exit(0);
     }
     else if (!N) {
-        cout << "ERROR: \"N\" variable was not entered correctly\n\n";
+        cout << "ERROR: \"N\" variable was not entered correctly\n";
 	exit(0);
     }
     else if (!UPPER_BOUND) {
-        cout << "ERROR: \"UPPER_BOUND\" variable was not entered correctly\n\n";
+        cout << "ERROR: \"UPPER_BOUND\" variable was not entered correctly\n";
 	exit(0);
     }
     
@@ -129,22 +129,22 @@ void Input::p_helper() {
     Polynomial p(polynomial);
     cout << "POLYNOMIAL ENTERED BY USER: " << p << "\n";
     lambda_algo Algo(p, UPPER_BOUND.value());
-    vector<uint32_t> result = Algo.Result();
+    vector<uint64_t> result = Algo.Result();
     if (result.empty()) {
         cout << "FAILURE: Unable to find corresponding lambda partition.\n";
         cout << "         Corresponding lambda partition doesn't exist\n";
-        cout << "         or you cant try entering a larger upper bound.\n\n";
+        cout << "         or you cant try entering a larger upper bound.\n";
 	return;
     }
     
     if (N < result[0]) {
         cout << "WARNING: N is less than the largest element in resulting lambda partition.\n";
-	cout << "         Count and smoothness detection will not be computed.\n\n";
+	cout << "         Count and smoothness detection will not be computed.\n";
 	return;
     }
     else if (N <= 0) {
         cout << "WARNING: N is not a strictly positive integer.\n";
-	cout << "         Count and smoothness detection will not be computed.\n\n";
+	cout << "         Count and smoothness detection will not be computed.\n";
 	return;
     }
     else {
@@ -159,7 +159,7 @@ void Input::p_helper() {
 
     auto condition = check_good_lambda(result, N.value());
     if (!condition) cout << "The resulting lambda partition is not smooth.\n";
-    else cout << "The resulting lambda partition is smooth and satisfies condition " << condition.value() << ".\n\n";
+    else cout << "The resulting lambda partition is smooth and satisfies condition " << condition.value() << ".\n";
     
     
 
@@ -167,11 +167,11 @@ void Input::p_helper() {
 
 void Input::cs_read() {
     if (!PARTITION) {
-        cout << "ERROR: \"PARTITION\" variable was not entered correctly\n\n";
+        cout << "ERROR: \"PARTITION\" variable was not entered correctly\n";
 	exit(0);
     }
     else if (!N) {
-        cout << "ERROR: \"N\" variable was not entered correctly\n\n";
+        cout << "ERROR: \"N\" variable was not entered correctly\n";
 	exit(0);
     }
 
@@ -189,19 +189,19 @@ void Input::cs_read() {
     cout << "N ENTERED BY USER: " << N.value() << "\n";
     sort(partition.begin(), partition.end(), greater<int>());
     cout << "PARTITION ENTERED BY USER: {";
-    for (int i = 0; i < partition.size(); i++) { cout << partition[i] << ", "; }
+    for (int i = 0; i < partition.size() - 1; i++) { cout << partition[i] << ", "; }
     cout << partition[partition.size() - 1] <<"}.\n";
 }
 
 void Input::c_helper() {
     if (N < partition[0]) {
-        cout << "WARNING: N is less than the largest element in resulting lambda partition.";
-	cout << "         Count and smoothness detection will not be computed.\n\n";
+        cout << "WARNING: N is less than the largest element in lambda partition.\n";
+	cout << "         Count and smoothness detection will not be computed.\n";
 	return;
     }
     else if (N <= 0) {
         cout << "WARNING: N is not a strictly positive integer.";
-	cout << "         Count and smoothness detection will not be computed.\n\n";
+	cout << "         Count and smoothness detection will not be computed.\n";
 	return;
     }
     else {
@@ -209,27 +209,27 @@ void Input::c_helper() {
 	    sat_ideals(count(partition.begin(), partition.end(), 2), count(partition.begin(), partition.end(), 1), N.value());
 	}
 	else {
-	    cout << "N is strictly greater than 2 or the largest element in the resulting lambda partition\n";
+	    cout << "N is strictly greater than 2 or the largest element in the lambda partition\n";
 	    cout << "is greater than 2.  Count will not be computed.\n";
 	}
     }
     auto condition = check_good_lambda(partition, N.value());
-    if (!condition) cout << "The resulting lambda partition is not smooth.\n";
-    else cout << "The resulting lambda partition is smooth and satisfies condition " << condition.value() << ".\n";
+    if (!condition) cout << "The lambda partition is not smooth.\n";
+    else cout << "The lambda partition is smooth and satisfies condition " << condition.value() << ".\n";
 }
 
 void Input::s_helper() {
     if (N < partition[0]) {
-        cout << "WARNING: N is less than the largest element in resulting lambda partition.";
-	cout << "         smoothness detection will not be computed.\n\n";
+        cout << "WARNING: N is less than the largest element in lambda partition.\n";
+	cout << "         smoothness detection will not be computed.\n";
 	return;
     }
     else if (N <= 0) {
         cout << "WARNING: N is not a strictly positive integer.";
-	cout << "         smoothness detection will not be computed.\n\n";
+	cout << "         smoothness detection will not be computed.\n";
 	return;
     }
     auto condition = check_good_lambda(partition, N.value());
-    if (!condition) cout << "The resulting lambda partition is not smooth.\n";
-    else cout << "The resulting lambda partition is smooth and satisfies condition " << condition.value() << ".\n";   
+    if (!condition) cout << "The lambda partition is not smooth.\n";
+    else cout << "The lambda partition is smooth and satisfies condition " << condition.value() << ".\n";   
 }

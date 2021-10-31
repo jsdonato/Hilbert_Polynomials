@@ -2,7 +2,7 @@
 
 using namespace std;
 
-optional<string> check_good_lambda (vector<uint32_t> lambda_partition, int N) {
+optional<string> check_good_lambda (vector<uint64_t> lambda_partition, int N) {
     // Check the first criterion
     if (N >= 0 && N <= 2) return "1";
     // Check the criterion 3a

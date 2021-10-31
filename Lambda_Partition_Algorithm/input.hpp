@@ -24,7 +24,7 @@ public:
 private:
     string input_file_name;
     vector<Term> polynomial;
-    vector<uint32_t> partition;
+    vector<uint64_t> partition;
     optional<string> POLYNOMIAL = nullopt;
     optional<string> PARTITION = nullopt;
     optional<size_t> N = nullopt;

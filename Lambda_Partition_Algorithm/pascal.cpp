@@ -1,22 +1,24 @@
 #include "pascal.hpp"
 
-Pascal::Pascal(){
-    vector<unsigned long long>temp(60, 0);
-    p_triangle.resize(60, temp);
+Pascal::Pascal(){ 
+    p_triangle.resize(68);
+    for (int i = 0; i < p_triangle.size(); i++) {
+        p_triangle[i].resize(i + 1);
+    }
         
     p_triangle[0][0] = 1;
     for (int i = 0; i < p_triangle.size(); i++){
         p_triangle[i][0] = 1;
-        p_triangle[0][i] = 1;
+        p_triangle[i][i] = 1;
     }
         
     for (int n = 1; n < p_triangle.size(); n++){
-        for (int m = 1; m < p_triangle.size(); m++){
-            p_triangle[n][m] = p_triangle[n][m - 1] + p_triangle[n - 1][m];
+        for (int m = 1; m < p_triangle[n].size() - 1; m++){
+            p_triangle[n][m] = p_triangle[n - 1][m - 1] + p_triangle[n - 1][m];
         }
     }
     
-    fact.resize(18);
+    fact.resize(21);
     fact[0] = 1;
     for (size_t i = 1; i < fact.size(); i++){
         fact[i] = i * fact[i - 1];
@@ -24,11 +26,11 @@ Pascal::Pascal(){
     
 }
     
-unsigned long long Pascal::Binomial(int n, int k){
-    return p_triangle[n - k][k];
+uint64_t Pascal::Binomial(int n, int k){
+    return p_triangle[n][k];
 }
 
-unsigned long long Pascal::factorial(size_t n){
+uint64_t Pascal::factorial(size_t n){
     return fact[n];
 }
 
